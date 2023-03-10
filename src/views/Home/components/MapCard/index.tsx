@@ -50,7 +50,7 @@ const MapCard = () => {
           className="scale-[0.987] w-full h-full rounded-[31px] overflow-hidden"
         >
           <Map
-            style="mapbox://styles/mapbox/dark-v11"
+            style="mapbox://styles/beenhad/clf1fk7i4008w01nsvtwxvo6e"
             containerStyle={{
               width: "100%",
               height: "100%",
