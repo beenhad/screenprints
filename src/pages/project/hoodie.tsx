@@ -1,9 +1,12 @@
+import AnimateFromBottom from "@/components/AnimateFromBottom";
 import Hoodie from "@/views/Hoodie";
 
 const HoodiePage = () => {
   return (
     <>
-      <Hoodie />
+      <AnimateFromBottom>
+        <Hoodie />
+      </AnimateFromBottom>
     </>
   );
 };

@@ -1,9 +1,12 @@
+import AnimateFromBottom from "@/components/AnimateFromBottom";
 import Faq from "@/views/Faq";
 
 const FaqPage = () => {
   return (
     <>
-      <Faq />
+      <AnimateFromBottom>
+        <Faq />
+      </AnimateFromBottom>
     </>
   );
 };

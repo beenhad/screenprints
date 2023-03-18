@@ -1,6 +1,5 @@
 import { cx } from "@/utils";
 import TabHeader from "@/views/Home/components/TabHeader";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -31,11 +30,12 @@ const Header = () => {
 
   if (!showHeader) return null;
   return (
-    <motion.header
-      exit={{ opacity: 1, y: -20 }}
-      transition={{ duration: 0.6 }}
+    <div
+      // initial={{ opacity: 0 }}
+      // animate={{ opacity: 1 }}
+      // transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
       className={cx(
-        "pb-2 md:pb-12 pt-12 px-[3.5vw] flex flex-col md:flex-row md:justify-between gap-y-5 items-center relative",
+        "animate_fade_up pb-2 md:pb-12 pt-12 px-[3.5vw] flex flex-col md:flex-row md:justify-between gap-y-5 items-center relative",
       )}
     >
       {/** Logo --Start-- */}
@@ -49,13 +49,12 @@ const Header = () => {
       </div>
 
       <Link
-        className="__text_sm hover:underline"
-        // hidden md:block
+        className="__text_sm hover:underline hidden md:block"
         href={"/get-a-quote"}
       >
         Contact
       </Link>
-    </motion.header>
+    </div>
   );
 };
 

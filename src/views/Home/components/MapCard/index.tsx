@@ -30,7 +30,7 @@ const MapCard = () => {
 
     timeout = setTimeout(() => {
       setState((prev) => prev + 1);
-    }, 500);
+    }, 800);
 
     return () => {
       clearTimeout(timeout);

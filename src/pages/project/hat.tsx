@@ -1,9 +1,12 @@
+import AnimateFromBottom from "@/components/AnimateFromBottom";
 import Hat from "@/views/Hat";
 
 const HatPage = () => {
   return (
     <>
-      <Hat />
+      <AnimateFromBottom>
+        <Hat />
+      </AnimateFromBottom>
     </>
   );
 };

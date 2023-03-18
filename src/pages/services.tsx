@@ -1,9 +1,12 @@
+import AnimateFromBottom from "@/components/AnimateFromBottom";
 import Services from "@/views/Services";
 
 const ServicesPage = () => {
   return (
     <>
-      <Services />
+      <AnimateFromBottom>
+        <Services />
+      </AnimateFromBottom>
     </>
   );
 };

@@ -115,7 +115,7 @@ const HomePageGridLayout = () => {
               "relative",
               activeTab.activeCards?.length > 0 &&
                 !activeTab.activeCards?.includes(item) &&
-                "opacity-25",
+                "opacity-25 pointer-events-none",
             )}
           >
             {/* <div className="absolute z-50 p-2 bg-red-500 top-4 left-4">

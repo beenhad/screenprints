@@ -1,3 +1,4 @@
+import AnimateFromBottom from "@/components/AnimateFromBottom";
 import Header from "@/components/Header";
 import { HomeGridLayoutProvider } from "@/hooks/useHomeGridLayout";
 import HomePageGridLayout from "./components/HomePageGridLayout";
@@ -7,7 +8,9 @@ const Home = () => {
     <>
       <HomeGridLayoutProvider>
         <Header />
-        <HomePageGridLayout />
+        <AnimateFromBottom>
+          <HomePageGridLayout />
+        </AnimateFromBottom>
       </HomeGridLayoutProvider>
     </>
   );

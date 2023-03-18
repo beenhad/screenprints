@@ -1,9 +1,12 @@
+import AnimateFromBottom from "@/components/AnimateFromBottom";
 import GetAQuote from "@/views/GetAQuote";
 
 const GetAQuotePage = () => {
   return (
     <>
-      <GetAQuote />
+      <AnimateFromBottom>
+        <GetAQuote />
+      </AnimateFromBottom>
     </>
   );
 };

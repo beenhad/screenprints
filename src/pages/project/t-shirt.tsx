@@ -1,9 +1,12 @@
+import AnimateFromBottom from "@/components/AnimateFromBottom";
 import TShirt from "@/views/TShirt";
 
 const TShirtPage = () => {
   return (
     <>
-      <TShirt />
+      <AnimateFromBottom>
+        <TShirt />
+      </AnimateFromBottom>
     </>
   );
 };
