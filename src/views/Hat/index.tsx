@@ -18,7 +18,7 @@ const Hat = () => {
               Screen printing <ArrowTopRight />
             </button>
             <button className="__btn md:px-[18px]">
-              Direc to Garment <ArrowTopRight />
+              Direct to Garment <ArrowTopRight />
             </button>
           </div>
         </div>
