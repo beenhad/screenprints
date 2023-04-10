@@ -1,7 +1,7 @@
 import AnimateFromBottom from "@/components/AnimateFromBottom";
 import TShirt from "@/views/TShirt";
 
-const TShirtPage = () => {
+const TShirtsPage = () => {
   return (
     <>
       <AnimateFromBottom>
@@ -11,4 +11,4 @@ const TShirtPage = () => {
   );
 };
 
-export default TShirtPage;
+export default TShirtsPage;
