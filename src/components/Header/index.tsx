@@ -48,10 +48,7 @@ const Header = () => {
         <TabHeader />
       </div>
 
-      <Link
-        className="__text_sm hover:underline hidden md:block"
-        href={"/get-a-quote"}
-      >
+      <Link className="__text_sm hidden md:block" href={"/get-a-quote"}>
         Contact
       </Link>
     </div>

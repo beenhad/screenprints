@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useEffect, useState } from "react";
 import { HiMinus, HiPlus } from "react-icons/hi";
-import ReactMapboxGl, { Feature, Layer } from "react-mapbox-gl";
+import ReactMapboxGl from "react-mapbox-gl";
 import { useFirstMountState, useWindowSize } from "react-use";
 
 const Map = ReactMapboxGl({
@@ -15,10 +15,14 @@ const Map = ReactMapboxGl({
 
 const MapCard = () => {
   const [state, setState] = useState(1);
-  const [zoom, setZoom] = useState(12);
+  const [zoom, setZoom] = useState(8);
   const { width } = useWindowSize();
   const isFirstMount = useFirstMountState();
   const { isHovered, handlers } = useIsHovered();
+
+  const minZoom = 2;
+  const maxZoom = 8;
+  const zoomValue = 3;
 
   useEffect(() => {
     console.log("first");
@@ -56,10 +60,13 @@ const MapCard = () => {
               height: "100%",
             }}
             zoom={[zoom]}
+            center={[33.812538, -84.358459].reverse() as [number, number]}
           >
-            <Layer>
-              <Feature coordinates={[33.812538, -84.358459]} />
-            </Layer>
+            {/* <Layer>
+              <Feature
+                coordinates={[33.812538, -84.358459].reverse()}
+              />
+            </Layer> */}
           </Map>
         </motion.div>
       </AnimatePresence>
@@ -83,20 +90,20 @@ const MapCard = () => {
         <button
           className={cx(
             "__btn_rounded",
-            zoom === 6 && "opacity-0 scale-50 delay-[1100ms]",
+            zoom === minZoom && "opacity-0 scale-50 delay-[1100ms]",
           )}
-          disabled={zoom === 6}
-          onClick={() => setZoom(zoom - 3)}
+          disabled={zoom === minZoom}
+          onClick={() => setZoom(zoom - zoomValue)}
         >
           <HiMinus size={14} />
         </button>
         <button
           className={cx(
             "__btn_rounded",
-            zoom === 12 && "opacity-0 scale-50 delay-[1100ms]",
+            zoom === maxZoom && "opacity-0 scale-50 delay-[1100ms]",
           )}
-          disabled={zoom === 12}
-          onClick={() => setZoom(zoom + 3)}
+          disabled={zoom === maxZoom}
+          onClick={() => setZoom(zoom + zoomValue)}
         >
           <HiPlus size={14} />
         </button>
@@ -106,3 +113,5 @@ const MapCard = () => {
 };
 
 export default MapCard;
+
+// 61.909627026473245, 24.665232598069526

@@ -10,7 +10,10 @@ const TermsAndConditions = () => {
           <h1 className="__title_xl">Terms and Conditions</h1>
 
           <div className="mt-[30px]">
-            <CollapsibleRenderer collapsibles={termsAndConditions} />
+            <CollapsibleRenderer
+              collapsibles={termsAndConditions}
+              defaultActiveIndex={0}
+            />
           </div>
         </div>
       </div>

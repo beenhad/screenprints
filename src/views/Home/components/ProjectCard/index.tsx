@@ -20,21 +20,6 @@ const Project = ({ img, link }: ProjectProps) => {
         <Image {...img} className="mix-blend-luminosity" />
       </div>
 
-      {/* <Link
-        href={link.url}
-        className="absolute bottom-[14px] left-[14px] overflow-hidden __btn_rounded group-hover:w-[120px] gap-2 duration-[400ms] flex justify-center"
-      >
-        <p className="whitespace-nowrap -translate-x-5 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 duration-[400ms] group-hover:delay-[150ms]">
-          {link.text}
-        </p>
-        <p className="whitespace-nowrap -translate-x-5 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 duration-[400ms] group-hover:delay-[150ms]">
-          {link.text}
-        </p>
-        <div className="-translate-x-[36.5px] group-hover:translate-x-0 duration-[400ms]">
-          <ArrowTopRight />
-        </div>
-      </Link> */}
-
       <motion.div
         animate={{
           width: isHovered ? "auto" : 36,

@@ -6,9 +6,13 @@ const TwitterCard = () => {
     <div className="__card flex flex-col relative justify-center items-center p-[14px] gap-1 text-center">
       <CardTwitterIcon />
 
-      <button className="__btn_rounded absolute bottom-[14px] left-[14px]">
+      <a
+        href="#"
+        target="_blank"
+        className="__btn_rounded absolute bottom-[14px] left-[14px]"
+      >
         <ArrowTopRight />
-      </button>
+      </a>
     </div>
   );
 };

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import useEnableGridLayoutTransition from "@/hooks/useEnableGridLayoutTransition";
 import useIsLayoutDraggable from "@/hooks/useIsLayoutDraggable";
 import { cx } from "@/utils";
@@ -8,7 +9,13 @@ import { useWindowSize } from "react-use";
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
 const cards = {
-  a: "",
+  a: (
+    <img
+      src="/img/hat.png"
+      className="mix-blend-luminosity w-full h-full object-cover"
+      alt="Hat"
+    />
+  ),
   b: "",
   c: "",
   d: "",
@@ -79,11 +86,13 @@ const ProjectGridLayout = () => {
         margin={[16, 16]}
       >
         {["a", "b", "c", "d", "e", "f", "g", "h", "i"].map((item) => (
-          <div key={item} className="__card">
+          <div key={item} className="__card p-0.5">
             {/* <div className="absolute z-50 p-2 bg-red-500 top-4 left-4">
               {item}
             </div> */}
-            {cards[item as never]}
+            <div className="overflow-hidden rounded-[30px] h-full w-full">
+              {cards[item as never]}
+            </div>
           </div>
         ))}
       </ResponsiveGridLayout>
