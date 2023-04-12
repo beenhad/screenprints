@@ -27,7 +27,7 @@ const Footer = () => {
       >
         Terms of Service
       </Link>
-      <p className="opacity-50">© 2023 Powered by GrayShapes Inc.</p>
+      <p className="opacity-50">© 2023 GrayShapes, Inc.</p>
 
       {/* <div className="flex flex-wrap justify-center gap-5 __text_sm">
         {pages.map((page, i) => (
