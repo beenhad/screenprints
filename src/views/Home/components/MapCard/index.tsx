@@ -25,7 +25,6 @@ const MapCard = () => {
   const zoomValue = 3;
 
   useEffect(() => {
-    console.log("first");
     if (isFirstMount) return;
 
     let timeout: any;
@@ -61,13 +60,7 @@ const MapCard = () => {
             }}
             zoom={[zoom]}
             center={[33.812538, -84.358459].reverse() as [number, number]}
-          >
-            {/* <Layer>
-              <Feature
-                coordinates={[33.812538, -84.358459].reverse()}
-              />
-            </Layer> */}
-          </Map>
+          ></Map>
         </motion.div>
       </AnimatePresence>
 
