@@ -7,7 +7,7 @@ const TwitterCard = () => {
       <CardTwitterIcon />
 
       <a
-        href="#"
+        href="https://twitter.com/screenprintsxyz"
         target="_blank"
         className="__btn_rounded absolute bottom-[14px] left-[14px]"
       >

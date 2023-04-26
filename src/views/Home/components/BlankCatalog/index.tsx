@@ -7,7 +7,7 @@ const BlankCatalog = () => {
       <p className="__text_sm">Updated for 2023</p>
 
       <a
-        href="#"
+        href="https://drive.google.com/file/d/1SyKvQpb906sEHYduG4WxwWTLU4mNK1iB/view?usp=sharing"
         target="_blank"
         className="__btn_rounded absolute bottom-[14px] left-[14px]"
       >

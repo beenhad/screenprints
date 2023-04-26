@@ -48,7 +48,7 @@ const Header = () => {
         <TabHeader />
       </div>
 
-      <Link className="__text_sm hidden md:block" href={"/get-a-quote"}>
+      <Link className="__text_sm hidden md:block" href={"https://cal.com/screenprints/schedule-a-meeting?duration=15"}>
         Contact
       </Link>
     </div>
