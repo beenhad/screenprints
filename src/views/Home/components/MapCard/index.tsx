@@ -1,78 +1,72 @@
 import SmileIcon from "@/components/Icons/SmileIcon";
 import useIsHovered from "@/hooks/useIsHovered";
 import { cx } from "@/utils";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
+import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { HiMinus, HiPlus } from "react-icons/hi";
-import ReactMapboxGl from "react-mapbox-gl";
-import { useFirstMountState, useWindowSize } from "react-use";
 
-const Map = ReactMapboxGl({
-  accessToken:
-    "pk.eyJ1IjoiYmVlbmhhZCIsImEiOiJjbGYxZjQ5eGwwN3NjM3hsaGkwOHlyZ2w4In0.Anz4we9n6FOKnF_iYNuOdw",
-});
+mapboxgl.accessToken =
+  "pk.eyJ1IjoiYmVlbmhhZCIsImEiOiJjbGYxZjQ5eGwwN3NjM3hsaGkwOHlyZ2w4In0.Anz4we9n6FOKnF_iYNuOdw";
 
-const MapComponent = ({ zoom }: { zoom: [number] }) => (
-  <Map
-    style="mapbox://styles/beenhad/clf1fk7i4008w01nsvtwxvo6e"
-    containerStyle={{
-      width: "100%",
-      height: "100%",
-    }}
-    zoom={zoom}
-    center={[33.812538, -84.358459].reverse() as [number, number]}
-  ></Map>
-);
-
-const MapCard = () => {
-  const [state, setState] = useState(1);
-  const [zoom, setZoom] = useState(8);
-  const { width } = useWindowSize();
-  const isFirstMount = useFirstMountState();
-  const { isHovered, handlers } = useIsHovered();
-
-  const minZoom = 2;
-  const maxZoom = 8;
-  const zoomValue = 3;
+const MapComponent = ({ zoom }: { zoom: [number] }) => {
+  const mapRef = useRef<mapboxgl.Map | null>(null);
 
   useEffect(() => {
-    if (isFirstMount) return;
+    const map = new mapboxgl.Map({
+      container: "map",
+      style: "mapbox://styles/beenhad/clf1fk7i4008w01nsvtwxvo6e",
+      center: [33.812538, -84.358459].reverse() as any,
+      zoom: zoom[0],
+      fadeDuration: 100,
+    });
 
-    let timeout: any;
+    mapRef.current = map;
 
-    if (timeout) clearTimeout(timeout);
+    let intervalId: any;
 
-    timeout = setTimeout(() => {
-      setState((prev) => prev + 1);
-    }, 800);
+    intervalId = setInterval(() => {
+      map.resize();
+    }, 150);
 
     return () => {
-      clearTimeout(timeout);
+      map.remove();
+      clearInterval(intervalId);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [width]);
+  }, []);
+
+  useEffect(() => {
+    mapRef.current?.zoomTo(zoom[0]);
+  }, [zoom]);
+
+  return (
+    <>
+      <div style={{ width: "100%", height: "100%" }} id="map"></div>
+      <button
+        className="absolute top-[-40px] left-0 z-[9999]"
+        onClick={() => mapRef.current?.resize()}
+      >
+        ReSize
+      </button>
+    </>
+  );
+};
+
+const MapCard = () => {
+  const [zoom, setZoom] = useState(9);
+  const { isHovered, handlers } = useIsHovered();
+
+  const minZoom = 3;
+  const maxZoom = 9;
+  const zoomValue = 3;
 
   return (
     <div className="relative p-0 __card group" {...handlers}>
-      {isFirstMount ? (
-        <div className="scale-[0.987] w-full h-full rounded-[31px] overflow-hidden">
-          <MapComponent zoom={[zoom]} />
-        </div>
-      ) : (
-        <AnimatePresence>
-          <motion.div
-            key={state}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0, transition: { duration: 0.1 } }}
-            transition={{ duration: 0.5 }}
-            className="scale-[0.987] w-full h-full rounded-[31px] overflow-hidden"
-          >
-            <MapComponent zoom={[zoom]} />
-          </motion.div>
-        </AnimatePresence>
-      )}
+      <div className="scale-[0.987] w-full h-full rounded-[31px] relative overflow-hidden">
+        <MapComponent zoom={[zoom]} />
+      </div>
 
       <div className="absolute inset-0  flex items-end justify-between p-[14px]">
         <div className="absolute duration-300 delay-[150ms] group-hover:scale-110 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-24 aspect-square border-4 border-white/25 bg-[#30363D]/50 rounded-full mix-blend-luminosity flex items-center justify-center">

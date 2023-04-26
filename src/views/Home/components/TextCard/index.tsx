@@ -1,4 +1,5 @@
 import ArrowTopRight from "@/components/Icons/ArrowTopRight";
+import Link from "next/link";
 
 type TextCardProps = {
   title: string;
@@ -15,9 +16,9 @@ const TextCard = ({ title, description, button }: TextCardProps) => {
       <p className="__text_base mt-1.5 mb-8">{description}</p>
 
       <div className="mt-auto">
-        <button className="__btn">
+        <Link href={button.url || "#"} className="__btn !w-fit">
           <ArrowTopRight /> {button.text}
-        </button>
+        </Link>
       </div>
     </div>
   );

@@ -17,7 +17,7 @@ const ResponsiveGridLayout = WidthProvider(Responsive);
 const cards = {
   a: (
     <TextCard
-      button={{ text: "Our services" }}
+      button={{ text: "Our services", url: "#" }}
       title="Merchandise and apparel printing"
       description="We simplify merchandise creation and deliver premium apparel items that resonate with clients."
     />
@@ -55,7 +55,7 @@ const cards = {
   ),
   g: (
     <TextCard
-      button={{ text: "Read more" }}
+      button={{ text: "Read more", url: "#" }}
       title="Have a question?"
       description="Check out answers to our most common questions, orders specifications and art requirements."
     />
@@ -77,7 +77,7 @@ const cards = {
   ),
   j: (
     <TextCard
-      button={{ text: "Get started" }}
+      button={{ text: "Get started", url: "#" }}
       title="Get a quote"
       description="Complete our order form and one of our account managers will reach out to you to confirm your total and gather remaining details."
     />
