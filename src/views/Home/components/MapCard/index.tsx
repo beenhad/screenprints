@@ -13,6 +13,18 @@ const Map = ReactMapboxGl({
     "pk.eyJ1IjoiYmVlbmhhZCIsImEiOiJjbGYxZjQ5eGwwN3NjM3hsaGkwOHlyZ2w4In0.Anz4we9n6FOKnF_iYNuOdw",
 });
 
+const MapComponent = ({ zoom }: { zoom: [number] }) => (
+  <Map
+    style="mapbox://styles/beenhad/clf1fk7i4008w01nsvtwxvo6e"
+    containerStyle={{
+      width: "100%",
+      height: "100%",
+    }}
+    zoom={zoom}
+    center={[33.812538, -84.358459].reverse() as [number, number]}
+  ></Map>
+);
+
 const MapCard = () => {
   const [state, setState] = useState(1);
   const [zoom, setZoom] = useState(8);
@@ -43,26 +55,24 @@ const MapCard = () => {
 
   return (
     <div className="relative p-0 __card group" {...handlers}>
-      <AnimatePresence>
-        <motion.div
-          key={state}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { duration: 0.1 } }}
-          transition={{ duration: 0.5 }}
-          className="scale-[0.987] w-full h-full rounded-[31px] overflow-hidden"
-        >
-          <Map
-            style="mapbox://styles/beenhad/clf1fk7i4008w01nsvtwxvo6e"
-            containerStyle={{
-              width: "100%",
-              height: "100%",
-            }}
-            zoom={[zoom]}
-            center={[33.812538, -84.358459].reverse() as [number, number]}
-          ></Map>
-        </motion.div>
-      </AnimatePresence>
+      {isFirstMount ? (
+        <div className="scale-[0.987] w-full h-full rounded-[31px] overflow-hidden">
+          <MapComponent zoom={[zoom]} />
+        </div>
+      ) : (
+        <AnimatePresence>
+          <motion.div
+            key={state}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, transition: { duration: 0.1 } }}
+            transition={{ duration: 0.5 }}
+            className="scale-[0.987] w-full h-full rounded-[31px] overflow-hidden"
+          >
+            <MapComponent zoom={[zoom]} />
+          </motion.div>
+        </AnimatePresence>
+      )}
 
       <div className="absolute inset-0  flex items-end justify-between p-[14px]">
         <div className="absolute duration-300 delay-[150ms] group-hover:scale-110 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-24 aspect-square border-4 border-white/25 bg-[#30363D]/50 rounded-full mix-blend-luminosity flex items-center justify-center">
