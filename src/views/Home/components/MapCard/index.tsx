@@ -15,7 +15,7 @@ const MapComponent = ({ zoom }: { zoom: [number] }) => {
 
   useEffect(() => {
     const map = new mapboxgl.Map({
-      container: "map",
+      container: "mapContainer",
       style: "mapbox://styles/beenhad/clf1fk7i4008w01nsvtwxvo6e",
       center: [33.812538, -84.358459].reverse() as any,
       zoom: zoom[0],
@@ -43,13 +43,11 @@ const MapComponent = ({ zoom }: { zoom: [number] }) => {
 
   return (
     <>
-      <div style={{ width: "100%", height: "100%" }} id="map"></div>
-      <button
-        className="absolute top-[-40px] left-0 z-[9999]"
-        onClick={() => mapRef.current?.resize()}
-      >
-        ReSize
-      </button>
+      <div
+        style={{ width: "100%", height: "100%" }}
+        className="w-full h-full rounded-[31px] relative overflow-hidden"
+        id="mapContainer"
+      ></div>
     </>
   );
 };
@@ -63,10 +61,8 @@ const MapCard = () => {
   const zoomValue = 3;
 
   return (
-    <div className="relative p-0.5 __card group" {...handlers}>
-      <div className="w-full h-full rounded-[31px] relative overflow-hidden">
-        <MapComponent zoom={[zoom]} />
-      </div>
+    <div className="relative p-0.5 overflow-hidden __card group" {...handlers}>
+      <MapComponent zoom={[zoom]} />
 
       <div className="absolute inset-0  flex items-end justify-between p-[14px]">
         <div className="absolute duration-300 delay-[150ms] group-hover:scale-110 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-24 aspect-square border-4 border-white/25 bg-[#30363D]/50 rounded-full flex items-center justify-center">
