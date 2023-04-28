@@ -10,7 +10,10 @@ const Services = () => {
           <h1 className="__title_xl">Services</h1>
 
           <div className="mt-[30px]">
-            <CollapsibleRenderer collapsibles={services} />
+            <CollapsibleRenderer
+              defaultActiveIndex={0}
+              collapsibles={services}
+            />
           </div>
         </div>
       </div>
