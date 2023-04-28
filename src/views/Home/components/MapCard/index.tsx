@@ -1,4 +1,4 @@
-import SmileIcon from "@/components/Icons/SmileIcon";
+/* eslint-disable @next/next/no-img-element */
 import useIsHovered from "@/hooks/useIsHovered";
 import { cx } from "@/utils";
 import { motion } from "framer-motion";
@@ -63,7 +63,7 @@ const MapCard = () => {
       </div>
 
       <div className="absolute inset-0  flex items-end justify-between p-[14px]">
-        <div className="absolute duration-300 delay-[150ms] group-hover:scale-110 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-24 aspect-square border-4 border-white/25 bg-[#30363D]/50 rounded-full mix-blend-luminosity flex items-center justify-center">
+        <div className="absolute duration-300 delay-[150ms] group-hover:scale-110 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-24 aspect-square border-4 border-white/25 bg-[#30363D]/50 rounded-full flex items-center justify-center">
           <motion.div
             animate={{
               rotate: isHovered ? [0, 25, 0, -25, 0] : 0,
@@ -75,7 +75,11 @@ const MapCard = () => {
               },
             }}
           >
-            <SmileIcon />
+            <img
+              src="/img/emoji.jpg"
+              className="w-8 rounded-full overflow-hidden"
+              alt=""
+            />
           </motion.div>
         </div>
         <button
