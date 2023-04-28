@@ -58,7 +58,9 @@ const MapCard = () => {
 
   return (
     <div className="relative p-0 __card group" {...handlers}>
-      <div className="w-full h-full rounded-[31px] relative overflow-hidden">
+      <div className="absolute inset-0 rounded-32px shadow-card-inset z-10 pointer-events-none"></div>
+
+      <div className="scale-[0.987] w-full h-full rounded-[31px] relative overflow-hidden">
         <MapComponent zoom={[zoom]} />
       </div>
 
