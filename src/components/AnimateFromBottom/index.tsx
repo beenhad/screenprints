@@ -1,20 +1,14 @@
-import { ReactNode } from "react";
+import { CSSProperties, ReactNode } from "react";
 
-const AnimateFromBottom = ({ children }: { children: ReactNode }) => {
+const AnimateFromBottom = ({
+  children,
+  style = {},
+}: {
+  children: ReactNode;
+  style?: CSSProperties;
+}) => {
   return (
-    <div
-      // initial={{ opacity: 0, y: 20 }}
-      // animate={{
-      //   opacity: 1,
-      //   y: 0,
-      //   transition: {
-      //     duration: 0.8,
-      //     ease: "easeOut",
-      //     delay: 0.5,
-      //   },
-      // }}
-      className="animate_slide_up"
-    >
+    <div style={style} className="animate_slide_up">
       {children}
     </div>
   );

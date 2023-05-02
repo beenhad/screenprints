@@ -8,7 +8,7 @@ const Home = () => {
     <>
       <HomeGridLayoutProvider>
         <Header />
-        <AnimateFromBottom>
+        <AnimateFromBottom style={{ animationDelay: "0.1s" }}>
           <HomePageGridLayout />
         </AnimateFromBottom>
       </HomeGridLayoutProvider>

@@ -3,7 +3,9 @@ import useHomeGridLayout from "@/hooks/useHomeGridLayout";
 import useIsLayoutDraggable from "@/hooks/useIsLayoutDraggable";
 import { cx } from "@/utils";
 import dynamic from "next/dynamic";
+import { useState } from "react";
 import { Responsive, WidthProvider } from "react-grid-layout";
+import { useEffectOnce, useRendersCount } from "react-use";
 import BlankCatalog from "../BlankCatalog";
 import LockedSwitchCard from "../LockedSwitchCard";
 import ProjectCard from "../ProjectCard";
@@ -88,7 +90,17 @@ const cards = {
 };
 
 const HomePageGridLayout = () => {
+  const [state, setState] = useState(0);
+  const renderCount = useRendersCount();
   const { activeTab, rowHeight } = useHomeGridLayout();
+
+  useEffectOnce(() => {
+    const timeoutId = setTimeout(() => {
+      setState((p) => p + 1);
+    }, 100);
+
+    return () => clearTimeout(timeoutId);
+  });
 
   useEnableGridLayoutTransition({
     wrapperClass: ".home_page_grid_layout",
@@ -97,11 +109,12 @@ const HomePageGridLayout = () => {
   const isDraggable = useIsLayoutDraggable();
 
   return (
-    <div>
+    <div key={state}>
       <ResponsiveGridLayout
         className={cx(
           "container px-0 home_page_grid_layout disable_transition",
           !rowHeight && "opacity-0 pointer-events-none",
+          state < 1 && "opacity-0 pointer-events-none",
         )}
         layouts={activeTab.layout}
         breakpoints={{ lg: 1200, md: 799, xxs: 0 }}
